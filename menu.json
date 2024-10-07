@@ -1,0 +1,196 @@
+[
+    {
+        "id": "menu",
+        "name": "Mcdonald's Menu"
+    },
+    {
+        "id": "breakfast",
+        "name": "Breakfast",
+        "parent": "menu"
+    },
+    {
+        "id": "burger",
+        "name": "Burger",
+        "parent": "menu"
+    },
+    {
+        "id": "chicken",
+        "name": "Chicken",
+        "parent": "menu"
+    },
+    {
+        "id": "sides",
+        "name": "Sides",
+        "parent": "menu"
+    },
+    {
+        "id": "beverages",
+        "name": "Beverages",
+        "parent": "menu"
+    },
+    {
+        "id": "beefburger",
+        "name": "Beefburger",
+        "parent": "burger"
+    },
+    {
+        "id": "cheeseburger",
+        "name": "Cheeseburger",
+        "parent": "burger"
+    },
+    {
+        "id": "double_cheeseburger",
+        "name": "Double Cheeseburger",
+        "parent": "burger"
+    },
+    {
+        "id": "big_mac",
+        "name": "Big Mac",
+        "parent": "burger"
+    },
+    {
+        "id": "mcchicken",
+        "name": "McChicken",
+        "parent": "burger"
+    },
+    {
+        "id": "spicy_chicken_mcdeluxe",
+        "name": "Spicy Chicken McDeluxe",
+        "parent": "chicken"
+    },
+    {
+        "id": "chicken_mcnuggets_6_pcs",
+        "name": "Chicken McNuggets 6 pcs",
+        "parent": "chicken"
+    },
+    {
+        "id": "ayam_goreng_mcd_regular",
+        "name": "Ayam Goreng McD Regular",
+        "parent": "chicken"
+    },
+    {
+        "id": "ayam_goreng_mcd_spicy",
+        "name": "Ayam Goreng McD Spicy",
+        "parent": "chicken"
+    },
+    {
+        "id": "bubur_ayam_mcd_large",
+        "name": "Bubur Ayam McD (Large)",
+        "parent": "chicken"
+    },
+    {
+        "id": "nasi_lemak_mcd",
+        "name": "Nasi Lemak McD",
+        "parent": "chicken"
+    },
+    {
+        "id": "gcb_grilled_chicken_burger",
+        "name": "GCB - Grilled Chicken Burger",
+        "parent": "burger"
+    },
+    {
+        "id": "filet_o_fish",
+        "name": "Filet-O-Fish",
+        "parent": "burger"
+    },
+    {
+        "id": "hash_browns",
+        "name": "Hash Browns",
+        "parent": "breakfast"
+    },
+    {
+        "id": "crispy_chicken_mcmuffin",
+        "name": "Crispy Chicken McMuffin",
+        "parent": "breakfast"
+    },
+    {
+        "id": "crispy_chicken_mcmuffin_with_egg",
+        "name": "Crispy Chicken McMuffin with Egg",
+        "parent": "breakfast"
+    },
+    {
+        "id": "sausage_mcmuffin",
+        "name": "Sausage McMuffin",
+        "parent": "breakfast"
+    },
+    {
+        "id": "sausage_mcmuffin_with_egg",
+        "name": "Sausage McMuffin with Egg",
+        "parent": "breakfast"
+    },
+    {
+        "id": "big_breakfast",
+        "name": "Big Breakfast",
+        "parent": "breakfast"
+    },
+    {
+        "id": "hotcakes",
+        "name": "Hotcakes (with syrup and margarine)",
+        "parent": "breakfast"
+    },
+    {
+        "id": "french_fries",
+        "name": "French Fries (Medium)",
+        "parent": "sides"
+    },
+    {
+        "id": "corn_cup",
+        "name": "Corn Cup (Large)",
+        "parent": "sides"
+    },
+    {
+        "id": "coke",
+        "name": "Coke (Medium)",
+        "parent": "beverages"
+    },
+    {
+        "id": "sprite",
+        "name": "Sprite (Medium)",
+        "parent": "beverages"
+    },
+    {
+        "id": "orange_juice",
+        "name": "Minute Maid Orange Juice (Medium)",
+        "parent": "beverages"
+    },
+    {
+        "id": "iced_lemon_tea",
+        "name": "Iced Lemon Tea (Medium)",
+        "parent": "beverages"
+    },
+    {
+        "id": "milo",
+        "name": "Iced MILO* (Medium)",
+        "parent": "beverages"
+    },
+    {
+        "id": "sundae_chocolate",
+        "name": "Sundae (Chocolate)",
+        "parent": "sides"
+    },
+    {
+        "id": "sundae_strawberry",
+        "name": "Sundae (Strawberry)",
+        "parent": "sides"
+    },
+    {
+        "id": "sundae_cone",
+        "name": "Sundae Cone",
+        "parent": "sides"
+    },
+    {
+        "id": "chocotop",
+        "name": "ChocoTop",
+        "parent": "sides"
+    },
+    {
+        "id": "oreo_mcflurry",
+        "name": "Oreo McFlurry",
+        "parent": "sides"
+    },
+    {
+        "id": "apple_pie",
+        "name": "Apple Pie",
+        "parent": "sides"
+    }
+]
