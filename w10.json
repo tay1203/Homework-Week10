@@ -6,31 +6,26 @@
   "params": [
     {
       "name": "Food",
-      "value": "Big Mac",
-      "bind": {
-        "input": "select",
-        "options": [
-          "Beefburger", "Cheeseburger", "Double Cheeseburger", "Big Mac", "McChicken", "Spicy Chicken McDeluxe",
-          "Chicken McNuggets 6 pcs", "Ayam Goreng McD Regular", "Ayam Goreng McD Spicy", "Bubur Ayam McD (Large)",
-          "Nasi Lemak McD", "GCB - Grilled Chicken Burger", "Filet-O-Fish", "Hash Browns", "Crispy Chicken McMuffin",
-          "Crispy Chicken McMuffin with Egg", "Sausage McMuffin", "Sausage McMuffin with Egg", "Big Breakfast",
-          "Hotcakes (with syrup and margarine)", "French Fries (Medium)", "Corn Cup (Large)", "Coke (Medium)",
-          "Sprite (Medium)", "Minute Maid Orange Juice (Medium)", "Iced Lemon Tea (Medium)", "Iced MILO* (Medium)",
-          "Sundae (Chocolate)", "Sundae (Strawberry)", "Sundae Cone", "ChocoTop", "Oreo McFlurry", "Apple Pie"
-        ]
-      }
+      "value": "Big Mac"
     }
+  ],
+  "transform": [
+    { "filter": { "param": "Food" } }
   ],
   "hconcat": [
     {
       "width": 600,
       "height": 300,
       "transform": [
+        { "filter": "datum.Food == Food" },
         {
-          "filter": "datum.Food == Food"
-        },
-        {
-          "fold": ["Carbohydrate (g)", "Protein (g)", "Fat (g)", "Salt (g)", "Sugar (g)"],
+          "fold": [
+            "Carbohydrate (g)",
+            "Protein (g)",
+            "Fat (g)",
+            "Salt (g)",
+            "Sugar (g)"
+          ],
           "as": ["Nutrient", "Value"]
         }
       ],
@@ -71,9 +66,7 @@
           "width": 200,
           "height": 200,
           "transform": [
-            {
-              "filter": "datum.Food == Food"
-            },
+            { "filter": "datum.Food == Food" },
             {
               "calculate": "2130 - datum['Energy (kcal)']",
               "as": "Remaining Calories"
@@ -93,7 +86,7 @@
               ],
               "mark": {
                 "type": "arc",
-                "innerRadius": 70,
+                "innerRadius": 50,
                 "tooltip": true
               },
               "encoding": {
@@ -113,7 +106,7 @@
                     "title": "Daily Calories (2130 kcal)"
                   }
                 },
-                "order": {"field": "Category", "sort": "descending"},
+                "order": { "field": "Category", "sort": "descending" },
                 "tooltip": [
                   { "field": "Category", "type": "nominal" },
                   { "field": "Value", "type": "quantitative", "format": ".0f" }
@@ -129,8 +122,12 @@
                 "font": "Arial"
               },
               "encoding": {
-                "text": {"field": "Percentage", "type": "quantitative", "format": ".1f"},
-                "y": {"value": 80}
+                "text": {
+                  "field": "Percentage",
+                  "type": "quantitative",
+                  "format": ".1f"
+                },
+                "y": { "value": 80 }
               }
             },
             {
@@ -142,8 +139,8 @@
                 "font": "Arial"
               },
               "encoding": {
-                "text": {"value": "of Daily"},
-                "y": {"value": 100}
+                "text": { "value": "of Daily" },
+                "y": { "value": 100 }
               }
             },
             {
@@ -155,8 +152,8 @@
                 "font": "Arial"
               },
               "encoding": {
-                "text": {"value": "Recommended"},
-                "y": {"value": 115}
+                "text": { "value": "Recommended" },
+                "y": { "value": 115 }
               }
             },
             {
@@ -168,8 +165,8 @@
                 "font": "Arial"
               },
               "encoding": {
-                "text": {"value": "Calories"},
-                "y": {"value": 130}
+                "text": { "value": "Calories" },
+                "y": { "value": 130 }
               }
             }
           ]
@@ -178,53 +175,53 @@
           "width": 200,
           "height": 200,
           "transform": [
+            { "filter": "datum.Food == Food" },
             {
-              "filter": "datum.Food == Food"
-            },
-            {
-              "calculate": "36 - datum['Sugar (g)']",
+              "calculate": "max(0, 36 - datum['Sugar (g)'])",
               "as": "Remaining Sugar"
-            },
-            {
-              "fold": ["Sugar (g)", "Remaining Sugar"],
-              "as": ["Category", "Value"]
             },
             {
               "calculate": "datum['Sugar (g)'] / 36 * 100",
               "as": "Percentage"
             }
           ],
-          "layer":[
+          "layer": [
             {
-            "mark": {
-              "type": "arc",
-              "innerRadius": 70,
-              "tooltip": true
-            },
-            "encoding": {
-              "theta": {
-                "field": "Value",
-                "type": "quantitative",
-                "sort": "ascending"
-              },
-              "color": {
-                "field": "Category",
-                "type": "nominal",
-                "scale": {
-                  "domain": ["Sugar (g)", "Remaining Sugar"],
-                  "range": ["#FFCC00", "#C8102E"]
-                },
-                "legend": {
-                  "title": "Daily Sugar (36 g)"
+              "transform": [
+                {
+                  "fold": ["Sugar (g)", "Remaining Sugar"],
+                  "as": ["Category", "Value"]
                 }
+              ],
+              "mark": {
+                "type": "arc",
+                "innerRadius": 50,
+                "tooltip": true
               },
-              "order": {"field": "Category", "sort": "descending"},
-              "tooltip": [
-                { "field": "Category", "type": "nominal" },
-                { "field": "Value", "type": "quantitative", "format": ".0f" }
-              ]
-            }
-          },
+              "encoding": {
+                "theta": {
+                  "field": "Value",
+                  "type": "quantitative",
+                  "sort": "descending"
+                },
+                "color": {
+                  "field": "Category",
+                  "type": "nominal",
+                  "scale": {
+                    "domain": ["Sugar (g)", "Remaining Sugar"],
+                    "range": ["#FFCC00", "#C8102E"]
+                  },
+                  "legend": {
+                    "title": "Daily Sugar (36 g)"
+                  }
+                },
+                "order": { "field": "Category", "sort": "descending" },
+                "tooltip": [
+                  { "field": "Category", "type": "nominal" },
+                  { "field": "Value", "type": "quantitative", "format": ".0f" }
+                ]
+              }
+            },
             {
               "mark": {
                 "type": "text",
@@ -234,8 +231,12 @@
                 "font": "Arial"
               },
               "encoding": {
-                "text": {"field": "Percentage", "type": "quantitative", "format": ".1f"},
-                "y": {"value": 80}
+                "text": {
+                  "field": "Percentage",
+                  "type": "quantitative",
+                  "format": ".1f"
+                },
+                "y": { "value": 80 }
               }
             },
             {
@@ -247,8 +248,8 @@
                 "font": "Arial"
               },
               "encoding": {
-                "text": {"value": "of Daily"},
-                "y": {"value": 100}
+                "text": { "value": "of Daily" },
+                "y": { "value": 100 }
               }
             },
             {
@@ -260,8 +261,8 @@
                 "font": "Arial"
               },
               "encoding": {
-                "text": {"value": "Recommended"},
-                "y": {"value": 115}
+                "text": { "value": "Recommended" },
+                "y": { "value": 115 }
               }
             },
             {
@@ -273,13 +274,11 @@
                 "font": "Arial"
               },
               "encoding": {
-                "text": {"value": "Sugar"},
-                "y": {"value": 130}
+                "text": { "value": "Sugar" },
+                "y": { "value": 130 }
               }
             }
-  
           ]
-          
         }
       ]
     }

@@ -4,29 +4,36 @@
     "width": 600,
     "height": 1600,
     "padding": 5,
-  
+    
     "signals": [
       {
-        "name": "labels", "value": true,
-        "bind": {"input": "checkbox"}
+        "name": "labels", 
+        "value": true
       },
       {
-        "name": "layout", "value": "tidy",
-        "bind": {"input": "radio", "options": ["tidy", "cluster"]}
+        "name": "layout", 
+        "value": "tidy"
       },
       {
-        "name": "links", "value": "diagonal",
-        "bind": {
-          "input": "select",
-          "options": ["line", "curve", "diagonal", "orthogonal"]
-        }
+        "name": "links", 
+        "value": "diagonal"
       },
       {
-        "name": "separation", "value": false,
-        "bind": {"input": "checkbox"}
+        "name": "separation", 
+        "value": true
+      },
+      {
+        "name": "Food", 
+        "value": null,
+        "on": [
+          {
+            "events": "symbol:click",
+            "update": "datum.name"
+          }
+        ]
       }
     ],
-  
+    
     "data": [
       {
         "name": "tree",
@@ -59,7 +66,7 @@
         ]
       }
     ],
-  
+    
     "scales": [
       {
         "name": "color",
@@ -69,7 +76,7 @@
         "zero": true
       }
     ],
-  
+    
     "marks": [
       {
         "type": "path",
@@ -92,7 +99,8 @@
           "update": {
             "x": {"field": "x"},
             "y": {"field": "y"},
-            "fill": {"scale": "color", "field": "depth"}
+            "fill": {"scale": "color", "field": "depth"},
+            "cursor": {"value": "pointer"}
           }
         }
       },
