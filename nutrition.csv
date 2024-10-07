@@ -1,6 +1,5 @@
 Food,Serving Size (g),Energy (kcal),Carbohydrate (g),Protein (g),Fat (g),Salt (g),Sugar (g),Type, id, parent
 McDonalds's Menu, 0, 0, 0, 0, 0, 0, 0, null, Menu, null
-None, 0, 0, 0, 0, 0, 0, 0, null, null, null
 Burgers, 0, 0, 0, 0, 0, 0, 0, null, Burgers, Menu
 Chicken, 0, 0, 0, 0, 0, 0, 0, null, Chicken, Menu
 Breakfast, 0, 0, 0, 0, 0, 0, 0, null, Breakfast, Menu
