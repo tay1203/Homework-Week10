@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Load specifications
         const treeSpec = await loadJSON('treemap.json');
         const nutritionSpec = await loadJSON('w10.json');
+        const sugar = await loadJSON('sugar.json');
+        const calories = await loadJSON('calories.json');
+        const salt = await loadJSON('salt.json');
 
         // Create visualizations
         const treeResult = await vegaEmbed('#tree-container', treeSpec);
@@ -32,11 +35,23 @@ document.addEventListener('DOMContentLoaded', function() {
         const nutritionResult = await vegaEmbed('#nutrition-container', nutritionSpec);
         nutritionView = nutritionResult.view;
 
+        const caloriesResult = await vegaEmbed('#calories-container', calories);
+        caloriesView = caloriesResult.view;
+
+        const saltResult = await vegaEmbed('#sugar-container', sugar);
+        saltView = saltResult.view;
+
+        const sugarResult = await vegaEmbed('#salt-container', salt);
+        sugarView = sugarResult.view;
+
         // Listen for changes in the selected food signal from the tree
         treeView.addSignalListener('Food', async function(name, value) {
             if (value) {
               // Update the nutrition chart with the selected food
               await nutritionView.signal("Food", value).runAsync();
+              await sugarView.signal("Food", value).runAsync();
+              await caloriesView.signal("Food", value).runAsync();
+              await saltView.signal("Food", value).runAsync();
             }
             console.log('Selected food:', value);
           });
