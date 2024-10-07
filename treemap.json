@@ -30,7 +30,7 @@
     "data": [
       {
         "name": "tree",
-        "url": "https://raw.githubusercontent.com/tay1203/Homework-Week10/refs/heads/main/nutrition.csv",
+        "url": "https://raw.githubusercontent.com/tay1203/Homework-Week10/refs/heads/main/menu.json",
         "transform": [
           {
             "type": "stratify",
