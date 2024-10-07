@@ -1,0 +1,56 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 600,
+    "height": 400,
+    "title": "McDonald's Revenue Over Time",
+    "data": {
+      "url": "https://raw.githubusercontent.com/tay1203/Homework-Week10/refs/heads/main/revenue.csv"
+    },
+    "layer": [
+      {
+        "mark": {"type": "area", "tooltip": true},
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "temporal",
+            "title": "Year"
+          },
+          "y": {
+            "aggregate": "sum",
+            "field": "value",
+            "type": "quantitative",
+            "title": "Revenue (in millions USD)",
+            "stack": "zero"
+          },
+          "color": {
+            "field": "key",
+            "type": "nominal",
+            "scale": {
+              "domain": ["Company-operated sales", "Franchised revenues"],
+              "range": ["#FFC300", "#DAF7A6"]
+            },
+            "title": "Revenue Type"
+          },
+          "tooltip": [
+            {"field": "Year", "type": "temporal", "title": "Year"},
+            {"field": "key", "type": "nominal", "title": "Revenue Type"},
+            {"field": "value", "type": "quantitative", "title": "Amount", "format": ",.0f"}
+          ]
+        },
+        "transform": [
+          {"fold": ["Company-operated sales", "Franchised revenues"]}
+        ]
+      },
+      {
+        "mark": {"type": "line", "color": "red"},
+        "encoding": {
+          "x": {"field": "Year", "type": "temporal"},
+          "y": {"field": "Total Revenue", "type": "quantitative"},
+          "tooltip": [
+            {"field": "Year", "type": "temporal", "title": "Year"},
+            {"field": "Total Revenue", "type": "quantitative", "title": "Total Revenue", "format": ",.0f"}
+          ]
+        }
+      }
+    ]
+  }
