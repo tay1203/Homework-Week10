@@ -1,69 +1,97 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 1180,
+  "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/tay1203/Homework-Week10/refs/heads/main/nutrition.csv"
   },
   "params": [
     {
       "name": "Food",
-      "value": "Big Mac"
+      "value": "Beefburger",
+      "bind": {
+        "input": "select",
+        "options": ["Beefburger", "Cheeseburger", "Double Cheeseburger", "Big Mac", "McChicken", "Spicy Chicken McDeluxe", 
+                    "Chicken McNuggets 6 pcs", "Ayam Goreng McD Regular", "Ayam Goreng McD Spicy", "Bubur Ayam McD (Large)", 
+                    "Nasi Lemak McD", "GCB - Grilled Chicken Burger", "Filet-O-Fish", "Hash Browns", "Crispy Chicken McMuffin", 
+                    "Crispy Chicken McMuffin with Egg", "Sausage McMuffin", "Sausage McMuffin with Egg", "Big Breakfast", 
+                    "Hotcakes (with syrup and margarine)", "French Fries (Medium)", "Corn Cup (Large)", "Coke (Medium)", 
+                    "Sprite (Medium)", "Minute Maid Orange Juice (Medium)", "Iced Lemon Tea (Medium)", "Iced MILO* (Medium)", 
+                    "Sundae (Chocolate)", "Sundae (Strawberry)", "Sundae Cone", "ChocoTop", "Oreo McFlurry", "Apple Pie"]
+      }
     }
   ],
   "transform": [
-    { "filter": { "param": "Food" } }
-  ],
-  "hconcat": [
     {
-      "width": 600,
-      "height": 300,
-      "transform": [
-        { "filter": "datum.Food == Food" },
-        {
-          "fold": [
-            "Carbohydrate (g)",
-            "Protein (g)",
-            "Fat (g)",
-            "Salt (g)",
-            "Sugar (g)"
-          ],
-          "as": ["Nutrient", "Value"]
-        }
-      ],
-      "mark": {
-        "type": "bar",
-        "tooltip": true,
-        "color": "#FFCC00",
-        "stroke": "#C8102E",
-        "strokeWidth": 1
-      },
-      "encoding": {
-        "x": {
-          "field": "Value",
-          "type": "quantitative",
-          "title": "Amount (g)",
-          "axis": {
-            "labelColor": "#C8102E",
-            "titleColor": "#C8102E"
-          }
-        },
-        "y": {
-          "field": "Nutrient",
-          "type": "nominal",
-          "title": null,
-          "axis": {
-            "labelColor": "#C8102E"
-          }
-        },
-        "tooltip": [
-          { "field": "Nutrient", "type": "nominal" },
-          { "field": "Value", "type": "quantitative", "format": ".1f" }
-        ]
+      "filter": "Food == datum.Food"
+    },
+    {
+      "fold": ["Carbohydrate (g)", "Protein (g)", "Fat (g)", "Salt (g)", "Sugar (g)"],
+      "as": ["Nutrient", "Value"]
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "tooltip": true,
+    "color": "#FFCC00",
+    "opacity": 0.9,
+    "stroke": "#C8102E",
+    "strokeWidth": 1
+  },
+  "encoding": {
+    "x": {
+      "field": "Value",
+      "type": "quantitative",
+      "title": "Nutrient Amount (g) per serving size",
+      "axis": {
+        "labelAngle": 0,
+        "labelColor": "#C8102E",   
+        "titleColor": "#C8102E",
+        "grid": false
       }
-    } 
-  ]
+    },
+    "y": {
+      "field": "Nutrient",
+      "type": "nominal",
+      "title": "Nutrient",
+      "axis": {
+        "labelColor": "#C8102E",
+        "titleColor": "#C8102E"
+      }
+    },
+    "color": {
+      "field": "Nutrient",
+      "type": "nominal",
+      "scale": {
+        "range": ["#FFCC00", "#C8102E", "#FFCC00", "#C8102E", "#FFCC00"],
+        "scheme": null
+      },
+      "legend": null
+    },
+    "tooltip": [
+      {"field": "Nutrient", "type": "nominal", "title": "Nutrient"},
+      {"field": "Value", "type": "quantitative", "title": "Amount (g)"}
+    ]
+  },
+  "config": {
+    "axis": {
+      "labelFontSize": 12,
+      "titleFontSize": 14,
+      "labelColor": "#C8102E", 
+      "titleColor": "#C8102E"  
+    },
+    "view": {
+      "continuousWidth": 400,
+      "continuousHeight": 300,
+      "stroke": "transparent"   
+    }, 
+    "style": {
+      "guide-label": {
+        "fill": "#C8102E"      
+      },
+      "guide-title": {
+        "fill": "#C8102E"      
+      }
+    }
+  }
 }
-
-      
-    
-  
-
